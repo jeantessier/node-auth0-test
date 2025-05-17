@@ -4,6 +4,28 @@ A trivial Express app that integrates with [Auth0](https://auth0.com/).
 
 Based on [this tutorial](https://auth0.com/docs/quickstart/backend/nodejs).
 
+## Configuration
+
+Copy `.env.template` to `.env` and plug in the values for your Auth0 API.
+
+The Express app only needs these two values:
+
+- `AUTH0_AUDIENCE`: The identifier for the API you're authenticating against.
+- `AUTH0_ISSUER_BASE_URL`: The URL prefix for connecting to the Auth0 tenant.  Essencially `http://${AUTH0_DOMAIN}/`.
+
+The following two come from the machine-to-machine Auth0 app that is authorized
+by the API.  They are not used by the Express app, but you will need them to
+generate access tokens.
+
+- `AUTH0_CLIENT_ID`: The unique ID for the Auth0 app.
+- `AUTH0_CLIENT_SECRET`: The secret for the Auth0 app.  DO NOT COMMIT TO GIT!!
+
+This last one also comes from the machine-to-machine Auth0 app that is
+authorized by the API.  I include it here to show how it relates to
+`AUTH0_ISSUER_BASE_URL` above.
+
+- `AUTH0_DOMAIN`: The domain for the Auth0 App.  Essentially the name of your Auth0 tenant + `.us.auth0.com`.  The `.us.` part may vary depending on where the app is being hosted.
+
 ## Public Endpoint
 
 The `/api/public` endpoint is public and you can access it without any authentication.
