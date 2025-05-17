@@ -123,3 +123,15 @@ HTTP/1.1 403 Forbidden
 You can get a JWT with the required scope with:
 
 > I haven't figured out this part, yet.
+
+And use the newJWT to access the scoped endpoint:
+
+```bash
+http --auth-type jwt :3000/api/private-scoped
+```
+
+```json
+{
+    "message": "Hello from a private endpoint! You need to be authenticated and have a scope of read:messages to see this."
+}
+```
