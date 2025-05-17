@@ -26,6 +26,14 @@ authorized by the API.  I include it here to show how it relates to
 
 - `AUTH0_DOMAIN`: The domain for the Auth0 App.  Essentially the name of your Auth0 tenant + `.us.auth0.com`.  The `.us.` part may vary depending on where the app is being hosted.
 
+## To Run
+
+Start the server with:
+
+```bash
+pnpm start
+```
+
 ## Public Endpoint
 
 The `/api/public` endpoint is public and you can access it without any authentication.
