@@ -30,12 +30,13 @@ app.get('/api/private', checkJwt, (req, res) => {
   })
 })
 
-const checkScopes = requiredScopes('read:messages');
+const requiredScope = 'read:messages'
+const checkScopes = requiredScopes(requiredScope)
 
 // This route needs authentication and a specific scope
 app.get('/api/private-scoped', checkJwt, checkScopes, (req, res) => {
   res.json({
-    message: 'Hello from a private endpoint! You need to be authenticated and have a scope of read:messages to see this.'
+    message: `Hello from a private endpoint! You need to be authenticated and have a scope of ${requiredScope} to see this.`
   })
 })
 
