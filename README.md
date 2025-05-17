@@ -78,6 +78,11 @@ Save the JWT to your environment:
 export JWT_AUTH_TOKEN=eyJhbGci...CRF37NhQ
 ```
 
+> Shortcut (using `jq`):
+> ```bash
+> export JWT_AUTH_TOKEN=$(http ${AUTH0_ISSUER_BASE_URL}/oauth/token grant_type=client_credentials client_id=${AUTH0_CLIENT_ID} client_secret=${AUTH0_CLIENT_SECRET} audience=${AUTH0_AUDIENCE} | jq --raw-output .access_token)
+> ```
+
 And use the JWT to access the private endpoint:
 
 ```bash
