@@ -128,11 +128,11 @@ http --auth-type jwt :3000/api/private-scoped
 HTTP/1.1 403 Forbidden
 ```
 
-You can get a JWT with the required scope with:
+The scope is set in the Auth0 dashboard by navigating to the machine-to-machine
+Auth0 App and looking at the APIs tab.  Expand the API that is authorized and
+select the `read:messages` permission to grant it this the app.
 
-> I haven't figured out this part, yet.
-
-And use the newJWT to access the scoped endpoint:
+And use the scoped JWT to access the scoped endpoint:
 
 ```bash
 http --auth-type jwt :3000/api/private-scoped
