@@ -103,7 +103,7 @@ http --auth-type jwt :3000/api/private
 }
 ```
 
-## Private Endpoint with Scope
+## Private Endpoint with Required Scope
 
 The `/api/private-scoped` endpoint is private and requires the JWT to include a
 specific scope.  If you try to access it without being authenticated, you will
@@ -117,8 +117,8 @@ http :3000/api/private-scoped
 HTTP/1.1 401 Unauthorized
 ```
 
-If you use a JWT with the required scope, like shown above, you will receive a
-different error code.
+If you use a JWT **without** the required scope, you will receive a different
+error code.
 
 ```bash
 http --auth-type jwt :3000/api/private-scoped
@@ -128,11 +128,15 @@ http --auth-type jwt :3000/api/private-scoped
 HTTP/1.1 403 Forbidden
 ```
 
-The scope is set in the Auth0 dashboard by navigating to the machine-to-machine
-Auth0 App and looking at the APIs tab.  Expand the API that is authorized and
-select the `read:messages` permission to grant it this the app.
+The scope is set in the Auth0 dashboard.  Navigate to the machine-to-machine
+Auth0 App and look at the "APIs" tab.  Expand the section for the API that is
+authorized and select the `read:messages` permission to grant it this the app.
+(You may need to create the permission on the API in the "API" section of the
+Auth0 dashboard.)
 
-And use the scoped JWT to access the scoped endpoint:
+Generate a new JWT that should now include a `scope` claim with the permission.
+
+And use this new scoped JWT to access the scoped endpoint:
 
 ```bash
 http --auth-type jwt :3000/api/private-scoped
