@@ -131,8 +131,9 @@ HTTP/1.1 403 Forbidden
 The scope is set in the Auth0 dashboard.  Navigate to the machine-to-machine
 Auth0 App and look at the "APIs" tab.  Expand the section for the API that is
 authorized and select the `read:messages` permission to grant it this the app.
-(You may need to create the permission on the API in the "API" section of the
-Auth0 dashboard.)
+
+> You may need to create the permission on the API in the "API" section of the
+> Auth0 dashboard.
 
 Generate a new JWT that should now include a `scope` claim with the permission.
 
