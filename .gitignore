@@ -2,3 +2,7 @@ node_modules
 
 # For local development
 .env
+.env.local
+
+# Ignore IDE files
+.idea
